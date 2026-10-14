@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+<html lang="en" class="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Breathizen — Essential Guide for Healthy Lungs & Vital Respiration</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        slate: {
+                            850: '#152033',
+                            900: '#0F172A',
+                        },
+                        air: {
+                            50: '#F0F9FF',
+                            100: '#E0F2FE',
+                            200: '#BAE6FD',
+                            300: '#7DD3FC',
+                            400: '#38BDF8',
+                            500: '#0EA5E9',
+                            600: '#0284C7',
+                            700: '#0369A1',
+                            800: '#075985',
+                            900: '#0C4A6E',
+                        },
+                        emerald: {
+                            50: '#ECFDF5',
+                            100: '#D1FAE5',
+                            300: '#6EE7B7',
+                            500: '#10B981',
+                            600: '#059669',
+                            800: '#065F46',
+                        },
+                        mint: {
+                            50: '#F0FDF4',
+                            100: '#DCFCE7',
+                            200: '#BBF7D0',
+                            400: '#4ADE80',
+                            500: '#22C55E',
+                            600: '#16A34A',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts & FontAwesome -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        /* Sky & Air Mesh Background */
+        .bg-mesh-air {
+            background-color: #f8fafc;
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(224, 242, 254, 0.8) 0px, transparent 50%),
+                radial-gradient(at 100% 0%, rgba(209, 250, 229, 0.6) 0px, transparent 50%),
+                radial-gradient(at 50% 100%, rgba(240, 249, 255, 0.9) 0px, transparent 50%);
+        }
+
+        .dark .bg-mesh-air {
+            background-color: #0b1329;
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(14, 165, 233, 0.15) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(16, 185, 129, 0.12) 0px, transparent 50%);
+        }
+
+        /* Glassmorphism Cards */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.82);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border: 1px solid rgba(14, 165, 233, 0.12);
+        }
+
+        .dark .glass-card {
+            background: rgba(15, 23, 42, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        /* Pulsing breathing ring */
+        @keyframes breathPulse {
+            0% { transform: scale(0.92); opacity: 0.6; box-shadow: 0 0 20px rgba(14, 165, 233, 0.2); }
+            50% { transform: scale(1.15); opacity: 1; box-shadow: 0 0 50px rgba(16, 185, 129, 0.5); }
+            100% { transform: scale(0.92); opacity: 0.6; box-shadow: 0 0 20px rgba(14, 165, 233, 0.2); }
+        }
+
+        .animate-breath {
+            animation: breathPulse 8s ease-in-out infinite;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #38BDF8;
+            border-radius: 999px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #0284C7;
+        }
+    </style>
+</head>
+<body class="bg-mesh-air text-slate-800 dark:text-slate-100 min-h-screen flex flex-col selection:bg-air-200 selection:text-air-900 transition-colors duration-500">
+
+    <!-- Navigation Bar Header -->
+    <header class="sticky top-0 z-50 glass-card border-b border-air-100/60 dark:border-slate-800 px-4 lg:px-8 py-3.5">
+        <div class="max-w-7xl mx-auto flex items-center justify-between">
+            
+            <!-- Logo -->
+            <a href="#" class="flex items-center gap-2.5 group">
+                <div class="w-10 h-10 rounded-2xl bg-gradient-to-tr from-air-600 via-air-500 to-emerald-400 flex items-center justify-center text-white shadow-lg shadow-air-500/20 group-hover:scale-105 transition-transform">
+                    <i class="fa-solid fa-lungs text-lg"></i>
+                </div>
+                <div>
+                    <span class="text-xl font-extrabold text-slate-900 dark:text-white tracking-tight">Breathizen</span>
+                    <span class="text-[10px] block font-bold tracking-widest text-emerald-600 dark:text-emerald-400 uppercase -mt-1">Lung Health & Respiration</span>
+                </div>
+            </a>
+
+            <!-- Desktop Navigation Links -->
+            <nav class="hidden md:flex items-center gap-7 text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-300">
+                <a href="#trainer" class="hover:text-air-600 dark:hover:text-air-300 transition-colors">Breath Trainer</a>
+                <a href="#tips" class="hover:text-air-600 dark:hover:text-air-300 transition-colors">Daily Tips</a>
+                <a href="#nutrition" class="hover:text-air-600 dark:hover:text-air-300 transition-colors">Superfoods</a>
+                <a href="#quiz" class="hover:text-air-600 dark:hover:text-air-300 transition-colors">Myths vs Facts</a>
+                <a href="#checklist" class="hover:text-air-600 dark:hover:text-air-300 transition-colors">Habit Tracker</a>
+            </nav>
+
+            <!-- Header Actions -->
+            <div class="flex items-center gap-3">
+                <button id="theme-toggle" class="w-10 h-10 rounded-2xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:text-air-600 flex items-center justify-center shadow-sm transition-all" title="Toggle Theme">
+                    <i class="fa-solid fa-moon"></i>
+                </button>
+                <a href="#trainer" class="px-4 py-2.5 rounded-2xl bg-gradient-to-r from-air-600 to-emerald-500 hover:from-air-700 hover:to-emerald-600 text-white font-extrabold text-xs shadow-md shadow-air-500/20 transition-all flex items-center gap-2">
+                    <i class="fa-solid fa-play text-[10px]"></i>
+                    <span>Start Exercise</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow">
+
+        <!-- SECTION 1: HERO SECTION -->
+        <section class="py-12 lg:py-20 px-4 max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-12">
+            
+            <!-- Left Hero Content -->
+            <div class="lg:w-1/2 space-y-6 text-center lg:text-left">
+                <span class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-100 dark:bg-emerald-950/60 border border-emerald-200 dark:border-emerald-800 text-emerald-800 dark:text-emerald-300 text-xs font-bold uppercase tracking-wider">
+                    <i class="fa-solid fa-shield-heart text-emerald-600"></i> Pure Air & Pulmonary Vitality
+                </span>
+                
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 dark:text-white leading-tight tracking-tight">
+                    Breathe Pure, <br>
+                    <span class="bg-gradient-to-r from-air-600 via-air-500 to-emerald-500 bg-clip-text text-transparent">Live Vibrant.</span>
+                </h1>
+
+                <p class="text-slate-600 dark:text-slate-300 text-base sm:text-lg leading-relaxed max-w-xl mx-auto lg:mx-0">
+                    Your lungs process over 2,000 gallons of air every day. Discover science-backed breathing techniques, botanical nutrition, posture resets, and habits to maximize oxygen intake and protect pulmonary health.
+                </p>
+                     <a href="https://dkthome.com/breathizen/breathizen.html">breathizen</a>
+<a href="https://lelpl.com/breathizen/breathizen.html">breathizen</a>
+<a href="https://edstv.com/breathizen/breathizen.html">breathizen</a>
+<a href="https://twtobin.com/breathizen/breathizen.html">breathizen</a>
+<a href="https://itared.com/breathizen/breathizen.html">breathizen</a>
+<a href="https://msnnewusa.com/respiratory-health/breathizen/breathizen.html">breathizen</a>
+<a href="https://nbcnewsusa.com/respiratory-health/breathizen/breathizen.html">breathizen</a>
+
+<a href="https://dkthome.com/sodapeak/sodapeak.html">sodapeak</a>
+<a href="https://lelpl.com/sodapeak/sodapeak.html">sodapeak</a>
+<a href="https://twtobin.com/sodapeak/sodapeak.html">sodapeak</a>
+<a href="https://itared.com/sodapeak/sodapeak.html">sodapeak</a>
+<a href="https://edstv.com/sodapeak/sodapeak.html">sodapeak</a>
+
+                <!-- Hero Stats Badges -->
+                <div class="grid grid-cols-3 gap-3 pt-2 max-w-md mx-auto lg:mx-0 text-center">
+                    <div class="p-3 rounded-2xl glass-card border border-air-100">
+                        <span class="block text-xl font-black text-air-600 dark:text-air-400">20,000+</span>
+                        <span class="text-[11px] font-bold text-slate-600 dark:text-slate-400">Breaths / Day</span>
+                    </div>
+                    <div class="p-3 rounded-2xl glass-card border border-air-100">
+                        <span class="block text-xl font-black text-emerald-600 dark:text-emerald-400">6 Liters</span>
+                        <span class="text-[11px] font-bold text-slate-600 dark:text-slate-400">Lung Capacity</span>
+                    </div>
+                    <div class="p-3 rounded-2xl glass-card border border-air-100">
+                        <span class="block text-xl font-black text-air-600 dark:text-air-400">10 Min</span>
+                        <span class="text-[11px] font-bold text-slate-600 dark:text-slate-400">Daily Practice</span>
+                    </div>
+                </div>
+
+                <!-- Call To Actions -->
+                <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-4">
+                    <a href="#trainer" class="w-full sm:w-auto px-8 py-4 rounded-2xl bg-gradient-to-r from-air-600 to-emerald-500 hover:from-air-700 hover:to-emerald-600 text-white font-extrabold text-sm shadow-xl shadow-air-500/25 hover:scale-102 transition-all flex items-center justify-center gap-3">
+                        <i class="fa-solid fa-stopwatch"></i>
+                        <span>Test Lung Stamina</span>
+                    </a>
+                    <a href="#tips" class="w-full sm:w-auto px-6 py-4 rounded-2xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 font-bold text-sm hover:bg-slate-50 dark:hover:bg-slate-750 transition-all text-center">
+                        Explore Protocols
+                    </a>
+                </div>
+            </div>
+
+            <!-- Right Hero Visual Interactive Pulmonary Orb -->
+            <div class="lg:w-1/2 relative flex items-center justify-center">
+                <div class="absolute w-72 h-72 sm:w-96 sm:h-96 bg-air-300/30 dark:bg-air-600/20 rounded-full blur-3xl pointer-events-none"></div>
+
+                <div class="relative w-full max-w-sm glass-card rounded-3xl p-8 border border-air-200/80 dark:border-slate-800 shadow-2xl flex flex-col items-center text-center">
+                    
+                    <span class="text-[10px] font-extrabold tracking-widest text-air-600 dark:text-air-400 uppercase mb-4">Interactive Respiration Visualizer</span>
+                    
+                    <!-- Animated Pulmonary Circle -->
+                    <div class="w-44 h-44 rounded-full bg-gradient-to-br from-air-400 to-emerald-400 p-1 flex items-center justify-center shadow-inner my-2 animate-breath">
+                        <div class="w-full h-full bg-white dark:bg-slate-900 rounded-full flex flex-col items-center justify-center p-4">
+                            <i class="fa-solid fa-lungs text-4xl text-air-600 dark:text-air-400 mb-1"></i>
+                            <span class="text-xs font-bold text-slate-700 dark:text-slate-200">Expand & Contract</span>
+                            <span class="text-[10px] text-slate-400">Diaphragmatic Rhythm</span>
+                        </div>
+                    </div>
+
+                    <p class="text-xs text-slate-500 dark:text-slate-400 mt-4 leading-relaxed">
+                        Deep diaphragmatic breathing increases blood oxygen saturation and relaxes the nervous system.
+                    </p>
+
+                    <button id="quick-breath-trigger" class="mt-5 w-full py-3 rounded-2xl bg-slate-900 dark:bg-air-500 text-white font-bold text-xs hover:bg-slate-800 transition-all flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-wind"></i> Quick 1-Min Oxygen Pulse
+                    </button>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- SECTION 2: INTERACTIVE LUNG CAPACITY & BREATH TRAINER -->
+        <section id="trainer" class="py-16 px-4 max-w-5xl mx-auto scroll-mt-20">
+            <div class="glass-card rounded-3xl p-6 sm:p-10 border border-air-200 dark:border-slate-800 shadow-xl space-y-8">
+                
+                <div class="text-center max-w-2xl mx-auto space-y-2">
+                    <span class="text-xs font-bold uppercase tracking-widest text-air-600 dark:text-air-400">Pulmonary Gym</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white">Lung Expansion & Hold Trainer</h2>
+                    <p class="text-slate-600 dark:text-slate-400 text-xs sm:text-sm">
+                        Use the 4-7-8 and Box Respiration pattern to stretch pulmonary capacity and strengthen respiratory muscles.
+                    </p>
+                </div>
+
+                <!-- Mode Selectors -->
+                <div class="flex justify-center gap-2 sm:gap-4 flex-wrap">
+                    <button id="mode-478" class="trainer-mode-btn px-4 py-2 rounded-xl text-xs font-bold bg-air-600 text-white shadow-md transition-all">4-7-8 Relax & Expand</button>
+                    <button id="mode-box" class="trainer-mode-btn px-4 py-2 rounded-xl text-xs font-bold bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 transition-all">Box Respiration (4-4-4-4)</button>
+                    <button id="mode-hold" class="trainer-mode-btn px-4 py-2 rounded-xl text-xs font-bold bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 transition-all">Free Hold Stamina Test</button>
+                </div>
+
+                <!-- Display Visualizer Center -->
+                <div class="flex flex-col items-center justify-center my-8 space-y-6">
+                    
+                    <div id="trainer-orb" class="relative w-56 h-56 rounded-full border-4 border-air-300 dark:border-air-700 flex flex-col items-center justify-center transition-all duration-1000 bg-air-50/50 dark:bg-slate-800/50">
+                        <span id="trainer-phase" class="text-xs font-extrabold uppercase tracking-widest text-air-600 dark:text-air-400">Ready</span>
+                        <span id="trainer-timer" class="text-5xl font-black text-slate-900 dark:text-white my-1">00</span>
+                        <span id="trainer-subtext" class="text-[11px] text-slate-500 dark:text-slate-400 px-4 text-center">Click Start Exercise below</span>
+                    </div>
+
+                    <!-- Controls -->
+                    <div class="flex items-center gap-4">
+                        <button id="trainer-start-btn" class="px-8 py-3.5 rounded-2xl bg-gradient-to-r from-air-600 to-emerald-500 text-white font-extrabold text-xs shadow-lg shadow-air-500/30 hover:scale-105 transition-all flex items-center gap-2">
+                            <i class="fa-solid fa-play"></i> Start Session
+                        </button>
+                        <button id="trainer-reset-btn" class="px-5 py-3.5 rounded-2xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 font-bold text-xs hover:bg-slate-100 transition-all">
+                            Reset
+                        </button>
+                    </div>
+
+                    <div class="text-xs text-slate-500 dark:text-slate-400 flex items-center gap-2">
+                        <i class="fa-solid fa-volume-high text-air-500"></i>
+                        <span id="sound-toggle-label">Audio Chimes: Enabled</span>
+                        <input type="checkbox" id="sound-toggle" checked class="accent-air-600 cursor-pointer ml-1">
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SECTION 3: DAILY HEALTHY LUNGS PROTOCOL & TIPS GRID -->
+        <section id="tips" class="py-16 px-4 max-w-7xl mx-auto scroll-mt-20">
+            <div class="text-center max-w-2xl mx-auto mb-10 space-y-2">
+                <span class="text-xs font-bold uppercase tracking-widest text-emerald-600 dark:text-emerald-400">Pulmonary Wellness Grid</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white">5 Pillars for Stronger Lungs</h2>
+                <p class="text-slate-600 dark:text-slate-400 text-xs sm:text-sm">Filter through essential science-backed habits to protect and revitalize your respiratory system.</p>
+            </div>
+
+            <!-- Category Filter Buttons -->
+            <div class="flex justify-center flex-wrap gap-2 mb-8">
+                <button data-filter="all" class="tip-filter-btn px-4 py-2 rounded-xl text-xs font-bold bg-slate-900 text-white dark:bg-air-500 shadow-md">All Pillars</button>
+                <button data-filter="breathing" class="tip-filter-btn px-4 py-2 rounded-xl text-xs font-bold bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700">Belly Breathing</button>
+                <button data-filter="air" class="tip-filter-btn px-4 py-2 rounded-xl text-xs font-bold bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700">Air Quality</button>
+                <button data-filter="posture" class="tip-filter-btn px-4 py-2 rounded-xl text-xs font-bold bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700">Posture & Stretch</button>
+                <button data-filter="aerobic" class="tip-filter-btn px-4 py-2 rounded-xl text-xs font-bold bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700">Aerobic Fitness</button>
+            </div>
+
+            <!-- Tips Grid -->
+            <div id="tips-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                
+                <!-- Tip Card 1 -->
+                <div class="tip-card p-6 rounded-3xl glass-card border border-air-100 dark:border-slate-800 space-y-4 hover:border-air-300 transition-all" data-category="breathing">
+                    <div class="flex items-center justify-between">
+                        <div class="w-10 h-10 rounded-2xl bg-air-100 dark:bg-air-900/60 text-air-600 dark:text-air-300 flex items-center justify-center font-bold text-lg">
+                            🫁
+                        </div>
+                        <span class="text-[10px] font-extrabold uppercase px-2.5 py-1 rounded-full bg-air-50 text-air-700 dark:bg-slate-800 dark:text-air-300">Belly Breathing</span>
+                    </div>
+                    <h3 class="font-bold text-lg text-slate-800 dark:text-white">Master Diaphragmatic Breathing</h3>
+                    <p class="text-slate-600 dark:text-slate-400 text-xs leading-relaxed">
+                        Shallow chest breathing uses only the upper lung lobes. Diaphragmatic breathing lowers the diaphragm, drawing air deep into the lower lobes where oxygen exchange is most efficient.
+                    </p>
+                    <div class="pt-2 border-t border-slate-100 dark:border-slate-800/80 text-[11px] font-semibold text-emerald-600 dark:text-emerald-400">
+                        <i class="fa-solid fa-check text-xs mr-1"></i> Practice 5-10 minutes every morning.
+                    </div>
+                </div>
+
+                <!-- Tip Card 2 -->
+                <div class="tip-card p-6 rounded-3xl glass-card border border-air-100 dark:border-slate-800 space-y-4 hover:border-air-300 transition-all" data-category="air">
+                    <div class="flex items-center justify-between">
+                        <div class="w-10 h-10 rounded-2xl bg-emerald-100 dark:bg-emerald-900/60 text-emerald-600 dark:text-emerald-300 flex items-center justify-center font-bold text-lg">
+                            🪴
+                        </div>
+                        <span class="text-[10px] font-extrabold uppercase px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-700 dark:bg-slate-800 dark:text-emerald-300">Air Quality</span>
+                    </div>
+                    <h3 class="font-bold text-lg text-slate-800 dark:text-white">Purify Indoor Living Spaces</h3>
+                    <p class="text-slate-600 dark:text-slate-400 text-xs leading-relaxed">
+                        Indoor dust, VOCs, and moisture irritate delicate pulmonary alveoli. Use HEPA air purifiers, maintain 30-50% humidity, and incorporate air-cleansing houseplants like Snake Plants and Peace Lilies.
+                    </p>
+                    <div class="pt-2 border-t border-slate-100 dark:border-slate-800/80 text-[11px] font-semibold text-emerald-600 dark:text-emerald-400">
+                        <i class="fa-solid fa-check text-xs mr-1"></i> Ventilate rooms daily for 15 minutes.
+                    </div>
+                </div>
+
+                <!-- Tip Card 3 -->
+                <div class="tip-card p-6 rounded-3xl glass-card border border-air-100 dark:border-slate-800 space-y-4 hover:border-air-300 transition-all" data-category="posture">
+                    <div class="flex items-center justify-between">
+                        <div class="w-10 h-10 rounded-2xl bg-sky-100 dark:bg-sky-900/60 text-sky-600 dark:text-sky-300 flex items-center justify-center font-bold text-lg">
+                            🧘‍♂️
+                        </div>
+                        <span class="text-[10px] font-extrabold uppercase px-2.5 py-1 rounded-full bg-sky-50 text-sky-700 dark:bg-slate-800 dark:text-sky-300">Posture</span>
+                    </div>
+                    <h3 class="font-bold text-lg text-slate-800 dark:text-white">Expand Thoracic Mobility</h3>
+                    <p class="text-slate-600 dark:text-slate-400 text-xs leading-relaxed">
+                        Slouching compresses the rib cage and reduces total lung capacity by up to 30%. Perform regular chest-opening stretches and shoulder rolls to give your lungs room to fully inflate.
+                    </p>
+                    <div class="pt-2 border-t border-slate-100 dark:border-slate-800/80 text-[11px] font-semibold text-emerald-600 dark:text-emerald-400">
+                        <i class="fa-solid fa-check text-xs mr-1"></i> Do hourly seated chest openers.
+                    </div>
+                </div>
+
+                <!-- Tip Card 4 -->
+                <div class="tip-card p-6 rounded-3xl glass-card border border-air-100 dark:border-slate-800 space-y-4 hover:border-air-300 transition-all" data-category="aerobic">
+                    <div class="flex items-center justify-between">
+                        <div class="w-10 h-10 rounded-2xl bg-teal-100 dark:bg-teal-900/60 text-teal-600 dark:text-teal-300 flex items-center justify-center font-bold text-lg">
+                            🏃‍♀️
+                        </div>
+                        <span class="text-[10px] font-extrabold uppercase px-2.5 py-1 rounded-full bg-teal-50 text-teal-700 dark:bg-slate-800 dark:text-teal-300">Aerobic Fitness</span>
+                    </div>
+                    <h3 class="font-bold text-lg text-slate-800 dark:text-white">Consistent Aerobic Conditioning</h3>
+                    <p class="text-slate-600 dark:text-slate-400 text-xs leading-relaxed">
+                        Bisk walking, swimming, and cycling force heart and lung muscles to work harder, supplying more oxygen to muscles and building long-term respiratory endurance.
+                    </p>
+                    <div class="pt-2 border-t border-slate-100 dark:border-slate-800/80 text-[11px] font-semibold text-emerald-600 dark:text-emerald-400">
+                        <i class="fa-solid fa-check text-xs mr-1"></i> Aim for 150 minutes of moderate cardio weekly.
+                    </div>
+                </div>
+
+                <!-- Tip Card 5 -->
+                <div class="tip-card p-6 rounded-3xl glass-card border border-air-100 dark:border-slate-800 space-y-4 hover:border-air-300 transition-all" data-category="air">
+                    <div class="flex items-center justify-between">
+                        <div class="w-10 h-10 rounded-2xl bg-cyan-100 dark:bg-cyan-900/60 text-cyan-600 dark:text-cyan-300 flex items-center justify-center font-bold text-lg">
+                            💧
+                        </div>
+                        <span class="text-[10px] font-extrabold uppercase px-2.5 py-1 rounded-full bg-cyan-50 text-cyan-700 dark:bg-slate-800 dark:text-cyan-300">Hydration</span>
+                    </div>
+                    <h3 class="font-bold text-lg text-slate-800 dark:text-white">Keep Mucosal Linings Hydrated</h3>
+                    <p class="text-slate-600 dark:text-slate-400 text-xs leading-relaxed">
+                        Drinking adequate water keeps mucosal linings in the bronchial tubes thin and fluid, allowing cilia to trap and clear out airborne allergens and particles effectively.
+                    </p>
+                    <div class="pt-2 border-t border-slate-100 dark:border-slate-800/80 text-[11px] font-semibold text-emerald-600 dark:text-emerald-400">
+                        <i class="fa-solid fa-check text-xs mr-1"></i> Sip 8-10 glasses of clean water daily.
+                    </div>
+                </div>
+
+                <!-- Tip Card 6 -->
+                <div class="tip-card p-6 rounded-3xl glass-card border border-air-100 dark:border-slate-800 space-y-4 hover:border-air-300 transition-all" data-category="breathing">
+                    <div class="flex items-center justify-between">
+                        <div class="w-10 h-10 rounded-2xl bg-emerald-100 dark:bg-emerald-900/60 text-emerald-600 dark:text-emerald-300 flex items-center justify-center font-bold text-lg">
+                            👃
+                        </div>
+                        <span class="text-[10px] font-extrabold uppercase px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-700 dark:bg-slate-800 dark:text-emerald-300">Nasal Breathing</span>
+                    </div>
+                    <h3 class="font-bold text-lg text-slate-800 dark:text-white">Prioritize Nasal Respiration</h3>
+                    <p class="text-slate-600 dark:text-slate-400 text-xs leading-relaxed">
+                        Your nose acts as a natural air filter, humidifier, and temperature regulator. Nasal breathing also produces nitric oxide, increasing lung oxygen absorption.
+                    </p>
+                    <div class="pt-2 border-t border-slate-100 dark:border-slate-800/80 text-[11px] font-semibold text-emerald-600 dark:text-emerald-400">
+                        <i class="fa-solid fa-check text-xs mr-1"></i> Inhale through nose during rest & sleep.
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SECTION 4: 5 ESSENTIAL FOODS & HERBS FOR LUNG VITALITY -->
+        <section id="nutrition" class="py-16 px-4 max-w-7xl mx-auto bg-emerald-50/40 dark:bg-slate-900/40 rounded-3xl border border-emerald-100 dark:border-slate-800 my-8 scroll-mt-20">
+            <div class="text-center max-w-2xl mx-auto mb-12 space-y-2">
+                <span class="text-xs font-bold uppercase tracking-widest text-emerald-600 dark:text-emerald-400">Botanical Nutrition</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white">Superfoods & Herbs for Lung Health</h2>
+                <p class="text-slate-600 dark:text-slate-400 text-xs sm:text-sm">Incorporate these antioxidant-rich, anti-inflammatory plants into your daily meals.</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+                
+                <!-- Item 1 -->
+                <div class="p-5 rounded-2xl glass-card text-center space-y-3 hover:-translate-y-1 transition-transform">
+                    <div class="w-12 h-12 mx-auto rounded-full bg-amber-100 text-amber-700 flex items-center justify-center text-xl">
+                        🫚
+                    </div>
+                    <h4 class="font-bold text-sm text-slate-800 dark:text-white">Ginger Root</h4>
+                    <p class="text-slate-500 dark:text-slate-400 text-[11px] leading-relaxed">
+                        Contains gingerol, helping breakdown air pollutant buildup in air passages.
+                    </p>
+                </div>
+
+                <!-- Item 2 -->
+                <div class="p-5 rounded-2xl glass-card text-center space-y-3 hover:-translate-y-1 transition-transform">
+                    <div class="w-12 h-12 mx-auto rounded-full bg-yellow-100 text-yellow-700 flex items-center justify-center text-xl">
+                        🟡
+                    </div>
+                    <h4 class="font-bold text-sm text-slate-800 dark:text-white">Turmeric & Curcumin</h4>
+                    <p class="text-slate-500 dark:text-slate-400 text-[11px] leading-relaxed">
+                        Powerful anti-inflammatory agent that relieves airway chest tightness.
+                    </p>
+                </div>
+
+                <!-- Item 3 -->
+                <div class="p-5 rounded-2xl glass-card text-center space-y-3 hover:-translate-y-1 transition-transform">
+                    <div class="w-12 h-12 mx-auto rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center text-xl">
+                        🥬
+                    </div>
+                    <h4 class="font-bold text-sm text-slate-800 dark:text-white">Leafy Dark Greens</h4>
+                    <p class="text-slate-500 dark:text-slate-400 text-[11px] leading-relaxed">
+                        Packed with carotenoids and antioxidants protecting lung tissue oxidation.
+                    </p>
+                </div>
+
+                <!-- Item 4 -->
+                <div class="p-5 rounded-2xl glass-card text-center space-y-3 hover:-translate-y-1 transition-transform">
+                    <div class="w-12 h-12 mx-auto rounded-full bg-red-100 text-red-700 flex items-center justify-center text-xl">
+                        🍎
+                    </div>
+                    <h4 class="font-bold text-sm text-slate-800 dark:text-white">Apples & Quercetin</h4>
+                    <p class="text-slate-500 dark:text-slate-400 text-[11px] leading-relaxed">
+                        Rich in flavonoid quercetin, linked to slower decline in lung function.
+                    </p>
+                </div>
+
+                <!-- Item 5 -->
+                <div class="p-5 rounded-2xl glass-card text-center space-y-3 hover:-translate-y-1 transition-transform">
+                    <div class="w-12 h-12 mx-auto rounded-full bg-teal-100 text-teal-700 flex items-center justify-center text-xl">
+                        🍵
+                    </div>
+                    <h4 class="font-bold text-sm text-slate-800 dark:text-white">Eucalyptus & Peppermint</h4>
+                    <p class="text-slate-500 dark:text-slate-400 text-[11px] leading-relaxed">
+                        Menthol steam relaxes bronchial smooth muscle and clears airways.
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SECTION 5: MYTH VS FACT QUIZ SECTION -->
+        <section id="quiz" class="py-16 px-4 max-w-4xl mx-auto scroll-mt-20">
+            <div class="text-center max-w-2xl mx-auto mb-10 space-y-2">
+                <span class="text-xs font-bold uppercase tracking-widest text-air-600 dark:text-air-400">Pulmonary Knowledge Check</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white">Lung Health: Myth vs. Fact</h2>
+                <p class="text-slate-600 dark:text-slate-400 text-xs sm:text-sm">Click each statement to reveal the clinical science behind common respiration beliefs.</p>
+            </div>
+
+            <div class="space-y-4">
+                
+                <!-- Quiz Item 1 -->
+                <div class="quiz-item glass-card rounded-2xl p-5 border border-air-100 dark:border-slate-800 cursor-pointer">
+                    <div class="flex items-center justify-between gap-4">
+                        <span class="font-bold text-sm text-slate-800 dark:text-white">"Shallow chest breathing delivers enough oxygen for daily activities."</span>
+                        <i class="fa-solid fa-chevron-down text-air-500 text-xs transition-transform duration-300"></i>
+                    </div>
+                    <div class="quiz-answer hidden mt-3 pt-3 border-t border-slate-100 dark:border-slate-800 text-xs text-slate-600 dark:text-slate-300 space-y-1">
+                        <span class="px-2 py-0.5 rounded bg-red-100 text-red-700 font-extrabold uppercase text-[10px] mr-2">MYTH</span>
+                        <p class="inline">Shallow breathing uses only 20-30% of total lung capacity, leaving stale air trapped in lower lobes and triggering low-level nervous system stress.</p>
+                    </div>
+                </div>
+
+                <!-- Quiz Item 2 -->
+                <div class="quiz-item glass-card rounded-2xl p-5 border border-air-100 dark:border-slate-800 cursor-pointer">
+                    <div class="flex items-center justify-between gap-4">
+                        <span class="font-bold text-sm text-slate-800 dark:text-white">"Lungs can self-clean once exposed to clean air and botanical hydration."</span>
+                        <i class="fa-solid fa-chevron-down text-air-500 text-xs transition-transform duration-300"></i>
+                    </div>
+                    <div class="quiz-answer hidden mt-3 pt-3 border-t border-slate-100 dark:border-slate-800 text-xs text-slate-600 dark:text-slate-300 space-y-1">
+                        <span class="px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 font-extrabold uppercase text-[10px] mr-2">FACT</span>
+                        <p class="inline">The bronchial tree uses microscopic hair-like structures called cilia and natural mucus to continuously clear trapped dust and particles when hydrated.</p>
+                    </div>
+                </div>
+
+                <!-- Quiz Item 3 -->
+                <div class="quiz-item glass-card rounded-2xl p-5 border border-air-100 dark:border-slate-800 cursor-pointer">
+                    <div class="flex items-center justify-between gap-4">
+                        <span class="font-bold text-sm text-slate-800 dark:text-white">"Indoor air is always cleaner than outdoor city air."</span>
+                        <i class="fa-solid fa-chevron-down text-air-500 text-xs transition-transform duration-300"></i>
+                    </div>
+                    <div class="quiz-answer hidden mt-3 pt-3 border-t border-slate-100 dark:border-slate-800 text-xs text-slate-600 dark:text-slate-300 space-y-1">
+                        <span class="px-2 py-0.5 rounded bg-red-100 text-red-700 font-extrabold uppercase text-[10px] mr-2">MYTH</span>
+                        <p class="inline">Indoor air can be 2x to 5x more polluted due to trapped dust, cleaning sprays, cooking fumes, and poor ventilation unless purified.</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SECTION 6: DAILY LUNG WELLNESS HABIT TRACKER -->
+        <section id="checklist" class="py-16 px-4 max-w-4xl mx-auto scroll-mt-20">
+            <div class="glass-card rounded-3xl p-6 sm:p-8 border border-air-200 dark:border-slate-800 shadow-xl space-y-6">
+                
+                <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                    <div>
+                        <span class="text-xs font-bold uppercase tracking-widest text-emerald-600 dark:text-emerald-400">Daily Goal Tracker</span>
+                        <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white">Breathizen Daily Lung Checklist</h2>
+                    </div>
+                    <div id="checklist-progress" class="px-4 py-2 rounded-2xl bg-emerald-100 text-emerald-800 font-extrabold text-xs">
+                        0 / 4 Completed
+                    </div>
+                </div>
+
+                <div class="space-y-3 pt-2">
+                    <label class="flex items-center justify-between p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/80 border border-slate-200/80 dark:border-slate-700/80 cursor-pointer hover:bg-white transition-colors">
+                        <div class="flex items-center gap-3">
+                            <input type="checkbox" data-index="0" class="habit-check w-5 h-5 accent-emerald-500 rounded cursor-pointer">
+                            <span class="text-xs sm:text-sm font-bold text-slate-800 dark:text-slate-200">Completed 10-Min Diaphragmatic Breath Session</span>
+                        </div>
+                        <span class="text-[10px] font-bold text-air-600 dark:text-air-400">Pulmonary Gym</span>
+                    </label>
+
+                    <label class="flex items-center justify-between p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/80 border border-slate-200/80 dark:border-slate-700/80 cursor-pointer hover:bg-white transition-colors">
+                        <div class="flex items-center gap-3">
+                            <input type="checkbox" data-index="1" class="habit-check w-5 h-5 accent-emerald-500 rounded cursor-pointer">
+                            <span class="text-xs sm:text-sm font-bold text-slate-800 dark:text-slate-200">Drank 8+ Glasses of Water (Hydrated Mucosal Lining)</span>
+                        </div>
+                        <span class="text-[10px] font-bold text-air-600 dark:text-air-400">Hydration</span>
+                    </label>
+
+                    <label class="flex items-center justify-between p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/80 border border-slate-200/80 dark:border-slate-700/80 cursor-pointer hover:bg-white transition-colors">
+                        <div class="flex items-center gap-3">
+                            <input type="checkbox" data-index="2" class="habit-check w-5 h-5 accent-emerald-500 rounded cursor-pointer">
+                            <span class="text-xs sm:text-sm font-bold text-slate-800 dark:text-slate-200">Ventilated Living Space or Took Fresh Air Walk</span>
+                        </div>
+                        <span class="text-[10px] font-bold text-air-600 dark:text-air-400">Environment</span>
+                    </label>
+
+                    <label class="flex items-center justify-between p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/80 border border-slate-200/80 dark:border-slate-700/80 cursor-pointer hover:bg-white transition-colors">
+                        <div class="flex items-center gap-3">
+                            <input type="checkbox" data-index="3" class="habit-check w-5 h-5 accent-emerald-500 rounded cursor-pointer">
+                            <span class="text-xs sm:text-sm font-bold text-slate-800 dark:text-slate-200">Performed Hourly Seated Chest & Rib Wall Stretches</span>
+                        </div>
+                        <span class="text-[10px] font-bold text-air-600 dark:text-air-400">Posture</span>
+                    </label>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SECTION 7: FAQ & NEWSLETTER -->
+        <section class="py-16 px-4 max-w-4xl mx-auto space-y-12">
+            
+            <div class="space-y-6">
+                <h2 class="text-2xl font-extrabold text-slate-900 dark:text-white text-center">Frequently Asked Questions</h2>
+                <div class="space-y-3">
+                    <div class="p-4 rounded-2xl glass-card text-xs space-y-1">
+                        <h4 class="font-bold text-slate-800 dark:text-white">How quickly can breath exercises improve lung stamina?</h4>
+                        <p class="text-slate-500 dark:text-slate-400 leading-relaxed">Consistent daily diaphragmatic practice for 2 to 3 weeks can noticeably increase tidal lung volume, lower resting heart rate, and improve physical stamina during aerobic exercises.</p>
+                    </div>
+                    <div class="p-4 rounded-2xl glass-card text-xs space-y-1">
+                        <h4 class="font-bold text-slate-800 dark:text-white">What is the best time of day to do deep breathing workouts?</h4>
+                        <p class="text-slate-500 dark:text-slate-400 leading-relaxed">Early morning before breakfast helps awaken respiratory muscles and oxygenate tissues, while an evening 4-7-8 session calms the sympathetic nervous system for restorative sleep.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Newsletter Signup -->
+            <div class="p-8 rounded-3xl bg-gradient-to-r from-air-600 via-air-500 to-emerald-500 text-white text-center space-y-4 shadow-2xl">
+                <h3 class="text-2xl font-black">Stay Inspired with Weekly Respiratory Tips</h3>
+                <p class="text-xs text-air-100 max-w-md mx-auto">Join 15,000+ wellness enthusiasts getting research updates, breathing exercises, and botanical guides every Monday.</p>
+                <form id="newsletter-form" class="flex flex-col sm:flex-row gap-2 max-w-md mx-auto pt-2">
+                    <input type="email" placeholder="Enter your email address" required class="flex-grow px-4 py-3 rounded-xl text-slate-800 text-xs outline-none focus:ring-2 focus:ring-white">
+                    <button type="submit" class="px-6 py-3 rounded-xl bg-slate-900 text-white font-extrabold text-xs hover:bg-slate-800 transition-all">Subscribe</button>
+                </form>
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 py-8 px-4">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
+            <div class="flex items-center gap-2">
+                <div class="w-6 h-6 rounded-lg bg-air-600 text-white flex items-center justify-center font-bold text-xs">B</div>
+                <span class="font-bold text-slate-800 dark:text-slate-200">Breathizen Lung Wellness Initiative</span>
+            </div>
+            <p>© 2026 Breathizen Inc. Dedicated to clean air, healthy lungs & vital living.</p>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT ENGINE -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            /* ===================================================
+               WEB AUDIO SYNTHESIZER FOR CHIMES
+               =================================================== */
+            let audioCtx = null;
+
+            function playChime(freq = 440) {
+                const soundEnabled = document.getElementById('sound-toggle').checked;
+                if (!soundEnabled) return;
+
+                try {
+                    if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                    const osc = audioCtx.createOscillator();
+                    const gain = audioCtx.createGain();
+
+                    osc.type = 'sine';
+                    osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+                    gain.gain.setValueAtTime(0.15, audioCtx.currentTime);
+                    gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 1.2);
+
+                    osc.connect(gain);
+                    gain.connect(audioCtx.destination);
+
+                    osc.start();
+                    osc.stop(audioCtx.currentTime + 1.2);
+                } catch(e) {
+                    console.log('Audio disabled or blocked', e);
+                }
+            }
+
+            /* ===================================================
+               BREATH TRAINER WIDGET ENGINE
+               =================================================== */
+            let currentMode = '478'; // '478', 'box', 'hold'
+            let trainerInterval = null;
+            let isRunning = false;
+
+            const trainerTimer = document.getElementById('trainer-timer');
+            const trainerPhase = document.getElementById('trainer-phase');
+            const trainerSubtext = document.getElementById('trainer-subtext');
+            const trainerOrb = document.getElementById('trainer-orb');
+            const startBtn = document.getElementById('trainer-start-btn');
+            const resetBtn = document.getElementById('trainer-reset-btn');
+
+            const modes = {
+                '478': [
+                    { phase: 'Inhale', duration: 4, sub: 'Breathe in deep into stomach', color: '#38BDF8', freq: 523.25 },
+                    { phase: 'Hold', duration: 7, sub: 'Keep lungs expanded smoothly', color: '#10B981', freq: 659.25 },
+                    { phase: 'Exhale', duration: 8, sub: 'Release air completely through mouth', color: '#0EA5E9', freq: 392.00 }
+                ],
+                'box': [
+                    { phase: 'Inhale', duration: 4, sub: 'Expand ribcage outward', color: '#38BDF8', freq: 523.25 },
+                    { phase: 'Hold', duration: 4, sub: 'Hold air steady', color: '#10B981', freq: 659.25 },
+                    { phase: 'Exhale', duration: 4, sub: 'Smooth exhale', color: '#0EA5E9', freq: 392.00 },
+                    { phase: 'Hold (Empty)', duration: 4, sub: 'Pause at bottom of breath', color: '#0284C7', freq: 329.63 }
+                ],
+                'hold': [
+                    { phase: 'Deep Inhale', duration: 5, sub: 'Fill lungs to 100% capacity', color: '#38BDF8', freq: 523.25 },
+                    { phase: 'Hold Stamina', duration: 30, sub: 'Relax shoulders and stay calm', color: '#10B981', freq: 659.25 },
+                    { phase: 'Full Exhale', duration: 6, sub: 'Exhale slowly', color: '#0EA5E9', freq: 392.00 }
+                ]
+            };
+
+            function setTrainerMode(modeKey) {
+                if (isRunning) resetTrainer();
+                currentMode = modeKey;
+
+                document.querySelectorAll('.trainer-mode-btn').forEach(btn => {
+                    btn.classList.remove('bg-air-600', 'text-white');
+                    btn.classList.add('bg-white', 'dark:bg-slate-800', 'text-slate-600', 'dark:text-slate-300');
+                });
+
+                if (modeKey === '478') document.getElementById('mode-478').className = 'trainer-mode-btn px-4 py-2 rounded-xl text-xs font-bold bg-air-600 text-white shadow-md transition-all';
+                if (modeKey === 'box') document.getElementById('mode-box').className = 'trainer-mode-btn px-4 py-2 rounded-xl text-xs font-bold bg-air-600 text-white shadow-md transition-all';
+                if (modeKey === 'hold') document.getElementById('mode-hold').className = 'trainer-mode-btn px-4 py-2 rounded-xl text-xs font-bold bg-air-600 text-white shadow-md transition-all';
+
+                trainerPhase.textContent = 'Ready';
+                trainerTimer.textContent = '00';
+                trainerSubtext.textContent = 'Click Start Session below';
+                trainerOrb.style.borderColor = '#38BDF8';
+            }
+
+            document.getElementById('mode-478').addEventListener('click', () => setTrainerMode('478'));
+            document.getElementById('mode-box').addEventListener('click', () => setTrainerMode('box'));
+            document.getElementById('mode-hold').addEventListener('click', () => setTrainerMode('hold'));
+
+            function startTrainer() {
+                if (isRunning) return;
+                isRunning = true;
+                startBtn.classList.add('opacity-50', 'pointer-events-none');
+
+                let stepIndex = 0;
+                let steps = modes[currentMode];
+                let secondsLeft = steps[stepIndex].duration;
+
+                function runStep() {
+                    let step = steps[stepIndex];
+                    trainerPhase.textContent = step.phase;
+                    trainerSubtext.textContent = step.sub;
+                    trainerOrb.style.borderColor = step.color;
+                    trainerTimer.textContent = secondsLeft < 10 ? '0' + secondsLeft : secondsLeft;
+                    playChime(step.freq);
+
+                    // Orb scale effect
+                    if (step.phase.includes('Inhale')) {
+                        trainerOrb.style.transform = 'scale(1.15)';
+                    } else if (step.phase.includes('Exhale')) {
+                        trainerOrb.style.transform = 'scale(0.92)';
+                    } else {
+                        trainerOrb.style.transform = 'scale(1.05)';
+                    }
+
+                    trainerInterval = setInterval(() => {
+                        secondsLeft--;
+                        trainerTimer.textContent = secondsLeft < 10 ? '0' + secondsLeft : secondsLeft;
+
+                        if (secondsLeft <= 0) {
+                            clearInterval(trainerInterval);
+                            stepIndex = (stepIndex + 1) % steps.length;
+                            secondsLeft = steps[stepIndex].duration;
+                            if (isRunning) runStep();
+                        }
+                    }, 1000);
+                }
+
+                runStep();
+            }
+
+            function resetTrainer() {
+                clearInterval(trainerInterval);
+                isRunning = false;
+                startBtn.classList.remove('opacity-50', 'pointer-events-none');
+                trainerPhase.textContent = 'Ready';
+                trainerTimer.textContent = '00';
+                trainerSubtext.textContent = 'Click Start Session below';
+                trainerOrb.style.transform = 'scale(1)';
+                trainerOrb.style.borderColor = '#38BDF8';
+            }
+
+            startBtn.addEventListener('click', startTrainer);
+            resetBtn.addEventListener('click', resetTrainer);
+            document.getElementById('quick-breath-trigger').addEventListener('click', () => {
+                document.getElementById('trainer').scrollIntoView({ behavior: 'smooth' });
+                setTrainerMode('478');
+                setTimeout(startTrainer, 600);
+            });
+
+            /* ===================================================
+               DAILY TIPS CATEGORY FILTER
+               =================================================== */
+            const filterBtns = document.querySelectorAll('.tip-filter-btn');
+            const tipCards = document.querySelectorAll('.tip-card');
+
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    filterBtns.forEach(b => {
+                        b.className = 'tip-filter-btn px-4 py-2 rounded-xl text-xs font-bold bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700';
+                    });
+                    btn.className = 'tip-filter-btn px-4 py-2 rounded-xl text-xs font-bold bg-slate-900 text-white dark:bg-air-500 shadow-md';
+
+                    const filter = btn.getAttribute('data-filter');
+                    tipCards.forEach(card => {
+                        if (filter === 'all' || card.getAttribute('data-category') === filter) {
+                            card.style.display = 'block';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                });
+            });
+
+            /* ===================================================
+               MYTH VS FACT ACCORDION
+               =================================================== */
+            document.querySelectorAll('.quiz-item').forEach(item => {
+                item.addEventListener('click', () => {
+                    const answer = item.querySelector('.quiz-answer');
+                    const icon = item.querySelector('.fa-chevron-down');
+                    const isHidden = answer.classList.contains('hidden');
+
+                    document.querySelectorAll('.quiz-answer').forEach(a => a.classList.add('hidden'));
+                    document.querySelectorAll('.quiz-item .fa-chevron-down').forEach(i => i.style.transform = 'rotate(0deg)');
+
+                    if (isHidden) {
+                        answer.classList.remove('hidden');
+                        if (icon) icon.style.transform = 'rotate(180deg)';
+                    }
+                });
+            });
+
+            /* ===================================================
+               HABIT TRACKER WITH LOCAL STORAGE
+               =================================================== */
+            const habitChecks = document.querySelectorAll('.habit-check');
+            const progressBadge = document.getElementById('checklist-progress');
+
+            function updateChecklistProgress() {
+                let savedState = JSON.parse(localStorage.getItem('breathizen_habits') || '[false, false, false, false]');
+                let completedCount = 0;
+
+                habitChecks.forEach((chk, i) => {
+                    chk.checked = !!savedState[i];
+                    if (chk.checked) completedCount++;
+                });
+
+                progressBadge.textContent = `${completedCount} / ${habitChecks.length} Completed`;
+                if (completedCount === habitChecks.length) {
+                    progressBadge.className = 'px-4 py-2 rounded-2xl bg-emerald-500 text-white font-extrabold text-xs shadow-md';
+                } else {
+                    progressBadge.className = 'px-4 py-2 rounded-2xl bg-emerald-100 text-emerald-800 font-extrabold text-xs';
+                }
+            }
+
+            habitChecks.forEach((chk, index) => {
+                chk.addEventListener('change', () => {
+                    let currentState = JSON.parse(localStorage.getItem('breathizen_habits') || '[false, false, false, false]');
+                    currentState[index] = chk.checked;
+                    localStorage.setItem('breathizen_habits', JSON.stringify(currentState));
+                    updateChecklistProgress();
+                });
+            });
+
+            updateChecklistProgress();
+
+            /* ===================================================
+               THEME SWITCHER
+               =================================================== */
+            const themeToggle = document.getElementById('theme-toggle');
+            themeToggle.addEventListener('click', () => {
+                document.documentElement.classList.toggle('dark');
+                const isDark = document.documentElement.classList.contains('dark');
+                themeToggle.innerHTML = isDark ? `<i class="fa-solid fa-sun"></i>` : `<i class="fa-solid fa-moon"></i>`;
+            });
+
+            /* Newsletter Submit */
+            document.getElementById('newsletter-form').addEventListener('submit', (e) => {
+                e.preventDefault();
+                alert('Thank you for subscribing to Breathizen Lung Health Newsletter!');
+                e.target.reset();
+            });
+
+        });
+    </script>
+</body>
+</html>
